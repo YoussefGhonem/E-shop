@@ -1,0 +1,65 @@
+
+<div class="login-form">
+    <form #userEdit="ngForm" (ngSubmit)="UpdateUser()" id="form">
+      <h1>Edit Yor Information</h1>
+      <div *ngIf="userEdit.dirty" class="alert alert-danger alert-dismissible"
+        style="padding: 3%;margin-top: 8%;margin-left: 2%;margin-right: 2%;"
+      role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Alert !</strong> You Must Be Save Your Changes
+        </div>   
+        
+        <div class="content">
+        <div class="input-field">
+          <input  name="username" [(ngModel)]="user.username">
+        </div>
+        <div class="input-field">
+          <input  name="email" [(ngModel)]="user.email">
+        </div>
+        <div class="input-field">
+          <input name="country" [(ngModel)]="user.country">
+        </div>
+        <div class="input-field">
+          <input name="city" [(ngModel)]="user.city">
+        </div>
+        <div class="input-field">
+          <textarea name="bio" [(ngModel)]="user.bio" 
+          class="form-control border-white"></textarea>
+        </div>
+      </div>
+      <div class="action">       
+        <button [routerLink]="['/products']">Cancel</button>
+        <button from="form"  [disabled]="!userEdit.dirty" type="submit">Save</button>
+      </div>
+    </form>
+  </div>
+  <!-- FYI — THE DATA IN THIS TABLE IS FAKE!!! -->
+<div class="content">
+  <h1>Manage Your Products</h1>
+  <input id="text-search" placeholder="Type to find..." type="search">
+  <table id="data-table">
+    <thead>
+      <tr>
+        <th title="Field #1">id</th>
+        <th title="Field #2">Product_name</th>
+        <th title="Field #3">address</th>
+        <th title="Field #4">price</th>
+        <th title="Field #5">dateAdded</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of myProduct;let i = index">
+        <td>{{i+1}}</td>
+        <td>{{p.name}}</td>
+        <td>{{p.address}}</td>
+        <td>{{p.price}}</td>
+        <td>{{p.dateAdded}}</td>
+        <td><i [routerLink]="['/product/edit',p.id]" style="cursor: pointer;outline: none;" class="fa fa-edit fa-2x"></i></td>
+        <td><i style="cursor: pointer;outline: none;" class="fa fa-trash fa-2x"></i></td>
+        <td><i [routerLink]="['/product/',p.id]" style="cursor: pointer; outline: none;" class="fa fa-eye fa-2x"></i></td>
+      </tr>
+     
+
+    </tbody>
+  </table>
+</div>

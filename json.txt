@@ -1,0 +1,37 @@
+[
+  '{{repeat(20)}}',
+  {
+    Username: '{{firstName("female")}}',
+    Email: '{{email()}}',
+    Gender: 'female',
+    DateOfBirth: '{{date(new Date(1970,0,1), new Date(1999, 11, 31), "YYYY-MM-dd")}}',
+    Password: '123#Aa',
+    Created: '{{date(new Date(2018,0,1), new Date(2018, 12, 30), "YYYY-MM-dd")}}',
+    LastActive: function(){return this.DateCreated; },
+    Bio: '{{lorem(1, "paragraphs")}}',
+    Interests: '{{lorem(1, "sentences")}}',
+    City: '{{city()}}',
+    Country: '{{country()}}',
+     Products: [
+        {
+        Price:'{{integer(20, 40)}}',
+        Phone: '+1 {{phone()}}',
+        Address: '{{integer(100, 999)}} {{street()}}, {{city()}}, {{state()}}, {{integer(100, 10000)}}',
+        Email: '{{email()}}',
+          DateAdded:'{{date(new Date(2018,0,1), new Date(2018, 12, 30), "YYYY-MM-dd")}}',
+        description: '{{lorem()}}',
+        Photos: [
+        {
+          url: function(num) {
+          return 'https://randomuser.me/api/portraits/women/' + num.integer(1,99) + '.jpg';
+        },
+        isMain: true,
+        description: '{{lorem()}}'
+      }
+    ]
+          
+      }
+    ]
+
+  }
+]

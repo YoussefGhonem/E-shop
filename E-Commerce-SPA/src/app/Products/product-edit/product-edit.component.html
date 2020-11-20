@@ -1,0 +1,32 @@
+
+<form #productEdit="ngForm" (ngSubmit)="updateProduct()">
+  <h1>Edit Your Product</h1>
+  <div *ngIf="productEdit.dirty" class="alert alert-danger alert-dismissible"
+  style="padding: 3%;margin-top: 8%;margin-left: 2%;margin-right: 2%;"
+role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>Alert !</strong> You Must Be Save Your Changes
+  </div> 
+  <div class="row">
+    <input type="text"  name="name" [(ngModel)]="product.name"/>
+    <label for="fancy-text">Name</label>
+  </div>  
+  <div class="row">
+    <input type="text" name="price" [(ngModel)]="product.price"/>
+    <label for="fancy-text">price</label>
+  </div>
+  <div class="row">
+    <input type="text" name="address" [(ngModel)]="product.address" />
+    <label for="fancy-text">address</label>
+  </div>
+  
+  <div class="row">
+    <textarea name="fancy-textarea" name="description" [(ngModel)]="product.description"></textarea>
+    <label for="fancy-textarea">description</label>
+  </div>
+  
+  <button type="submit" [disabled]="!productEdit.dirty">Submit</button>
+</form>
+<div class="container">
+  <app-photo-editor [photos]="product.photos" [productId]="product.id"></app-photo-editor>
+</div>

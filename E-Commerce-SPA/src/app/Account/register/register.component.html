@@ -1,0 +1,31 @@
+<div class="login-form">
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+      <h1>Register</h1>
+      <div class="content">
+            <div class="input-field">
+          <input  type="text" placeholder="UserName" formControlName="username" name="username">
+          <div style="color: crimson;"
+          *ngIf="this.registerForm.get('username').touched  && this.registerForm.get('username').hasError('required')">
+          required</div>
+        </div>
+        <div class="input-field">
+          <input  type="email" placeholder="Email" formControlName="email" name="email">
+          <div style="color: crimson;"
+          *ngIf="registerForm.get('email').touched && registerForm.get('email').hasError('required')">
+          required</div>
+          <div style="color: crimson;" *ngIf="this.registerForm.get('email').hasError('email')">
+              Email Not Valid</div>
+        </div>
+        <div class="input-field">
+          <input  type="password" placeholder="Password" formControlName="password" name="password">
+          <div style="color: crimson;"
+          *ngIf="this.registerForm.get('password').touched && this.registerForm.get('password').hasError('required')">
+          required</div>
+        </div>
+      </div>
+      <div class="action">       
+        <button [routerLink]="['/login']">Sign in</button>
+        <button  type="submit">Register</button>
+      </div>
+    </form>
+  </div>
